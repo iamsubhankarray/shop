@@ -6,14 +6,7 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 import AccountScreen from './screens/account';
 import CartScreen from './screens/Cart';
 
-function HomeScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Home!</Text>
-      {/* <Ionicons name='checkmark'size={32} color="green"/> */}
-    </View>
-  );
-}
+
 
 
 
