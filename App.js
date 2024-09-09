@@ -17,7 +17,7 @@ const Tab = createBottomTabNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Tab.Navigator screenOptions={{tabBarShowLabel: false}}>
+      <Tab.Navigator screenOptions={{tabBarShowLabel: false,headerShown:false}}>
         <Tab.Screen name="home" component={HomeScreen} options={{tabBarIcon:()=><AntDesign name="home" size={35} color="black" />}} />
         <Tab.Screen name="reOrder" component={ReorderScreen} options={{tabBarIcon:()=><AntDesign name="user" size={35} color="black" />}} />
         <Tab.Screen name="cart" component={CartScreen} options={{tabBarIcon:()=> <AntDesign name="shoppingcart" size={35} color="black" />}}/>
