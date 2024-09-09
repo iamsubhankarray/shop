@@ -5,6 +5,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import AccountScreen from './screens/account';
 import CartScreen from './screens/Cart';
+import HomeScreen from './screens/Home';
+import ReorderScreen from './screens/Reorder';
 
 
 
@@ -17,7 +19,7 @@ export default function App() {
     <NavigationContainer>
       <Tab.Navigator screenOptions={{tabBarShowLabel: false}}>
         <Tab.Screen name="home" component={HomeScreen} options={{tabBarIcon:()=><AntDesign name="home" size={35} color="black" />}} />
-        <Tab.Screen name="reOrder" component={HomeScreen} options={{tabBarIcon:()=><AntDesign name="user" size={35} color="black" />}} />
+        <Tab.Screen name="reOrder" component={ReorderScreen} options={{tabBarIcon:()=><AntDesign name="user" size={35} color="black" />}} />
         <Tab.Screen name="cart" component={CartScreen} options={{tabBarIcon:()=> <AntDesign name="shoppingcart" size={35} color="black" />}}/>
         <Tab.Screen name="account" component={AccountScreen}options={{tabBarIcon:()=><AntDesign name="user" size={35} color="black" />}} />
       </Tab.Navigator>
