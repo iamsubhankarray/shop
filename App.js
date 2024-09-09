@@ -3,6 +3,8 @@ import { Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import AntDesign from '@expo/vector-icons/AntDesign';
+import AccountScreen from './screens/account';
+import CartScreen from './screens/Cart';
 
 function HomeScreen() {
   return (
@@ -13,24 +15,18 @@ function HomeScreen() {
   );
 }
 
-function SettingsScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Settings!</Text>
-    </View>
-  );
-}
+
 
 const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Tab.Navigator screenOptions={{}}>
-        <Tab.Screen name="home" component={HomeScreen} options={{tabBarIcon:()=><AntDesign name="home" size={24} color="black" />}} />
-        <Tab.Screen name="reOrder" component={HomeScreen} options={{tabBarIcon:()=><AntDesign name="user" size={24} color="black" />}} />
-        <Tab.Screen name="cart" component={HomeScreen} options={{tabBarIcon:()=> <AntDesign name="shoppingcart" size={24} color="black" />}}/>
-        <Tab.Screen name="account" component={SettingsScreen}options={{tabBarIcon:()=><AntDesign name="user" size={24} color="black" />}} />
+      <Tab.Navigator screenOptions={{tabBarShowLabel: false}}>
+        <Tab.Screen name="home" component={HomeScreen} options={{tabBarIcon:()=><AntDesign name="home" size={35} color="black" />}} />
+        <Tab.Screen name="reOrder" component={HomeScreen} options={{tabBarIcon:()=><AntDesign name="user" size={35} color="black" />}} />
+        <Tab.Screen name="cart" component={CartScreen} options={{tabBarIcon:()=> <AntDesign name="shoppingcart" size={35} color="black" />}}/>
+        <Tab.Screen name="account" component={AccountScreen}options={{tabBarIcon:()=><AntDesign name="user" size={35} color="black" />}} />
       </Tab.Navigator>
     </NavigationContainer>
   );
