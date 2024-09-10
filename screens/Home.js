@@ -3,10 +3,13 @@ import { Text, View } from "react-native";
 import EvilIcons from '@expo/vector-icons/EvilIcons';
 import Header from "../component/Header"
 import Catagory from "../component/Catagory";
+import Products from "../component/Products";
+import { useState } from "react";
 
 
 export default function HomeScreen() {
-  const catagories = ["treanding",'new','mens','women','kids','teens','others']
+  const [selectedcatagory, setSelectedCatagory] = useState(null)
+  const catagories = ["treanding", 'new', 'mens', 'women', 'kids', 'teens', 'others']
   return (
 
     <View style={styles.container}>
@@ -18,7 +21,7 @@ export default function HomeScreen() {
       <Text style={styles.title}>Placeholder Title</Text>
 
       <View style={styles.inputContainer}>
-        <View style={{flex:.2,  alignItems: "center" }}>
+        <View style={{ flex: .2, alignItems: "center" }}>
 
           <EvilIcons name="search" size={30} color="grey" />
         </View>
@@ -31,12 +34,20 @@ export default function HomeScreen() {
 
       </View>
       <FlatList
-      showsHorizontalScrollIndicator={false}
-      horizontal={true}
-      data={catagories}
-      keyExtractor={(item)=>item}
-      renderItem={Catagory}/>
-      
+        showsHorizontalScrollIndicator={false}
+        horizontal={true}
+        data={catagories}
+        keyExtractor={(item) => item}
+        renderItem={({ item }) => (
+          <Catagory item={item}
+            selectedcatagory={selectedcatagory}
+            setSelectedCatagory={setSelectedCatagory} />)} />
+      <View style={{flexDirection:"row"}}>
+
+        <Products />
+        <Products />
+      </View>
+
 
 
     </View>
@@ -45,10 +56,9 @@ export default function HomeScreen() {
 }
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    // justifyContent:"center",
+
     alignItems: "center",
-    backgroundColor: "lightgrey"
+    // backgroundColor: "lightgrey"
 
   },
   header: {
@@ -59,7 +69,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     fontWeight: "500",
-  
+
     marginTop: 10,
 
   },
@@ -67,11 +77,11 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     height: 40,
     marginTop: 10,
-    borderRadius: 15,   
+    borderRadius: 15,
     alignItems: "center",
     flexDirection: "row",
-    justifyContent:"center",
-    
+    justifyContent: "center",
+
     paddingHorizontal: 10,
 
 
@@ -81,7 +91,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     flex: 1,
     // backgroundColor:"lightgrey"
-    alignSelf:"center",
+    alignSelf: "center",
 
 
   }
