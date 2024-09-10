@@ -18,7 +18,7 @@ export default function HomeScreen() {
 
         <Header />
       </View>
-      <Text style={styles.title}>Placeholder Title</Text>
+      <Text style={styles.title}>Ecommerce App</Text>
 
       <View style={styles.inputContainer}>
         <View style={{ flex: .2, alignItems: "center" }}>
@@ -42,7 +42,7 @@ export default function HomeScreen() {
           <Catagory item={item}
             selectedcatagory={selectedcatagory}
             setSelectedCatagory={setSelectedCatagory} />)} />
-      <View style={{flexDirection:"row"}}>
+      <View style={{ flexDirection: "row" }}>
 
         <Products />
         <Products />
@@ -65,13 +65,12 @@ const styles = StyleSheet.create({
     marginTop: 35,
 
   },
-
   title: {
-    fontSize: 20,
+    fontSize: 25,
+    // fontFamily:"arial",
     fontWeight: "500",
-
+    color: "orange",
     marginTop: 10,
-
   },
   inputContainer: {
     backgroundColor: "white",
@@ -83,14 +82,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
 
     paddingHorizontal: 10,
-
-
-
   },
   input: {
     fontSize: 15,
     flex: 1,
-    // backgroundColor:"lightgrey"
     alignSelf: "center",
 
 

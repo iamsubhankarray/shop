@@ -9,7 +9,7 @@ const Header = () => {
         justifyContent:"space-between",
         paddingHorizontal:10,
        
-        backgroundColor:"white",
+        // backgroundColor:"grey",
         width:375,
         height:40,
         borderRadius:7}}>
