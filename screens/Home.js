@@ -1,17 +1,20 @@
 import { FlatList, Image, StyleSheet, TextInput } from "react-native";
 import { Text, View } from "react-native";
 import EvilIcons from '@expo/vector-icons/EvilIcons';
-import Header from "../component/Header"
+import Header from "../component/Header";
 import Catagory from "../component/Catagory";
 import Products from "../component/Products";
+import data from "../src/data.json" 
+
 import { useState } from "react";
 
 // <<<MAIN FUNCTION START>>>
 export default function HomeScreen() {
   const [selectedcatagory, setSelectedCatagory] = useState(null)
+  const [pRODUCTitems,setproductitems]=useState(data.products)
   const catagories = ["treanding", 'new', 'mens', 'women', 'kids', 'teens', 'others']
   return (
-    //<<<HEADER COMPONENT FROM COMPONENT/HEAADER >>>
+    // <<<HEADER COMPONENT FROM COMPONENT/HEAADER >>>
 
     <View style={styles.container}>
 
@@ -22,49 +25,48 @@ export default function HomeScreen() {
 
 
       {/* <<< FlatList ITEM WITH BODY OF THE PAGE>>>     */}
-      
+
 
 
       <FlatList
         numColumns={2}
-        ListHeaderComponent={()=>(
+        ListHeaderComponent={() => (
           <>
-          {/* <<< MAIN TITLE >>> */}
-          <View style={{justifyContent:"center",alignItems:"center"}}>
+            {/* <<< MAIN TITLE >>> */}
+            <View style={{ justifyContent: "center", alignItems: "center" }}>
 
-            <Text style={styles.title}>Ecommerce App</Text>
-          </View>
-          {/* <<< SEARCH ELEMENT STARTS >>>> */}
+              <Text style={styles.title}>Ecommerce App</Text>
+            </View>
+            {/* <<< SEARCH ELEMENT STARTS >>>> */}
 
-<View style={styles.inputContainer}>
-  <View style={{ flex: .2, alignItems: "center" }}>
+            <View style={styles.inputContainer}>
+              <View style={{ flex: .2, alignItems: "center" }}>
 
-    <EvilIcons name="search" size={30} color="grey" />
-  </View>
-  <TextInput
-    // placeholder="search"
+                <EvilIcons name="search" size={30} color="grey" />
+              </View>
+              <TextInput
+                // placeholder="search"
 
-    // value=""
-    // onChangeText={hehehe}
-    style={styles.input} />/
+                // value=""
+                // onChangeText={hehehe}
+                style={styles.input} />
 
-    {/* <<< PRODUCT PAGE >>> */}
-</View>
-          <FlatList
-        showsHorizontalScrollIndicator={false}
-        horizontal={true}
-        data={catagories}
-        keyExtractor={(item) => item}
-        renderItem={({ item }) => (
-          <Catagory item={item}
-            selectedcatagory={selectedcatagory}
-            setSelectedCatagory={setSelectedCatagory} />)} />
+            </View>
+              {/* <<< PRODUCT PAGE >>> */}
+            <FlatList
+              showsHorizontalScrollIndicator={false}
+              horizontal={true}
+              data={catagories}
+              keyExtractor={(item) => item}
+              renderItem={({ item }) => (
+                <Catagory item={item}
+                  selectedcatagory={selectedcatagory}
+                  setSelectedCatagory={setSelectedCatagory} />)} />
           </>
         )}
         showsVerticalScrollIndicator={false}
-        data={[1, 2, 3, 4, 5, 6, 7, 8, 9,]}
-        renderItem={(item) => <Products
-        />} />
+        data={pRODUCTitems}
+        renderItem={({item,index}) => <Products item={item}index={index} />} />
 
 
 
