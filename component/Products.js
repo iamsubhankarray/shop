@@ -1,13 +1,16 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
 import AntDesign from '@expo/vector-icons/AntDesign';
+import { useNavigation } from '@react-navigation/native';
 
 const Products = ({item,index}) => {
   const [like, setlike] = useState(false)
+  const navigation=useNavigation
+  
   return (
     <View style={{ justifyContent: "center", alignItems: "center", marginHorizontal: 7,marginTop:20 }}>
       
-      <View >
+      <TouchableOpacity onPress={()=>navigation.navigate=(reOrder)}>
         <Image
         //  source={require('../assets/girl.png')}
          source={{uri:item.image}}
@@ -27,7 +30,7 @@ const Products = ({item,index}) => {
             <AntDesign name="heart" size={20} color="red" /> :
             <AntDesign name="heart" size={25} color="lightgrey" />}
         </TouchableOpacity>
-      </View>
+      </TouchableOpacity>
       </View>
     
   )
