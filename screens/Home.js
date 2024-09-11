@@ -9,8 +9,8 @@ import data from "../src/data.json"
 import { useState } from "react";
 
 // <<<MAIN FUNCTION START>>>
-export default function HomeScreen() {
-  const [selectedcatagory, setSelectedCatagory] = useState("treanding")
+export default function HomeScreen(props) {
+  const [selectedcatagory, setSelectedCatagory] = useState(null)
   const [pRODUCTitems,setproductitems]=useState(data.products)
   const catagories = ["treanding", 'new', 'mens', 'women', 'kids', 'teens', 'others']
   return (

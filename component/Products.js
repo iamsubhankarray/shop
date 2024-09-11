@@ -3,16 +3,17 @@ import React, { useState } from 'react'
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { useNavigation } from '@react-navigation/native';
 
-const Products = ({item,index}) => {
+const Products = ({item,index,}) => {
   const [like, setlike] = useState(false)
-  const navigation=useNavigation
+  const navigation = useNavigation()
   
   return (
     <View style={{ justifyContent: "center", alignItems: "center", marginHorizontal: 7,marginTop:20 }}>
       
-      <TouchableOpacity onPress={()=>navigation.navigate=(reOrder)}>
+      <TouchableOpacity onPress={()=>
+        {navigation.navigate("ProductDetails",{item})} }>
         <Image
-        //  source={require('../assets/girl.png')}
+        
          source={{uri:item.image}}
           
           style={{ width: 175, height: 256, borderRadius: 20, }}
