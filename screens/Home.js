@@ -6,11 +6,12 @@ import Catagory from "../component/Catagory";
 import Products from "../component/Products";
 import { useState } from "react";
 
-
+// <<<MAIN FUNCTION START>>>
 export default function HomeScreen() {
   const [selectedcatagory, setSelectedCatagory] = useState(null)
   const catagories = ["treanding", 'new', 'mens', 'women', 'kids', 'teens', 'others']
   return (
+    //<<<HEADER COMPONENT FROM COMPONENT/HEAADER >>>
 
     <View style={styles.container}>
 
@@ -18,22 +19,38 @@ export default function HomeScreen() {
 
         <Header />
       </View>
-      <Text style={styles.title}>Ecommerce App</Text>
 
-      <View style={styles.inputContainer}>
-        <View style={{ flex: .2, alignItems: "center" }}>
 
-          <EvilIcons name="search" size={30} color="grey" />
-        </View>
-        <TextInput
-          // placeholder="search"
+      {/* <<< FlatList ITEM WITH BODY OF THE PAGE>>>     */}
+      
 
-          // value=""
-          // onChangeText={hehehe}
-          style={styles.input} />
 
-      </View>
       <FlatList
+        numColumns={2}
+        ListHeaderComponent={()=>(
+          <>
+          {/* <<< MAIN TITLE >>> */}
+          <View style={{justifyContent:"center",alignItems:"center"}}>
+
+            <Text style={styles.title}>Ecommerce App</Text>
+          </View>
+          {/* <<< SEARCH ELEMENT STARTS >>>> */}
+
+<View style={styles.inputContainer}>
+  <View style={{ flex: .2, alignItems: "center" }}>
+
+    <EvilIcons name="search" size={30} color="grey" />
+  </View>
+  <TextInput
+    // placeholder="search"
+
+    // value=""
+    // onChangeText={hehehe}
+    style={styles.input} />/
+
+    {/* <<< PRODUCT PAGE >>> */}
+</View>
+          <FlatList
         showsHorizontalScrollIndicator={false}
         horizontal={true}
         data={catagories}
@@ -42,15 +59,21 @@ export default function HomeScreen() {
           <Catagory item={item}
             selectedcatagory={selectedcatagory}
             setSelectedCatagory={setSelectedCatagory} />)} />
-      <View style={{ flexDirection: "row" }}>
-
-        <Products />
-        <Products />
-      </View>
+          </>
+        )}
+        showsVerticalScrollIndicator={false}
+        data={[1, 2, 3, 4, 5, 6, 7, 8, 9,]}
+        renderItem={(item) => <Products
+        />} />
 
 
 
     </View>
+
+
+
+
+
 
   );
 }
