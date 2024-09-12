@@ -1,24 +1,39 @@
-import { StyleSheet, Text, View,Image, } from 'react-native'
+import { StyleSheet, Text, View, Image, } from 'react-native'
 import Entypo from '@expo/vector-icons/Entypo';
-import React from 'react'
+import AntDesign from '@expo/vector-icons/AntDesign';
 
-const Header = () => {
+
+import React from 'react';
+
+const Header = ({ iscart }) => {
   return (
-    <View style={{alignItems:"center",justifyContent:"center"}}>
-       <View style={{flexDirection:"row",
-        justifyContent:"space-between",
-        paddingHorizontal:10,
-       
-        // backgroundColor:"grey",
-        width:375,
-        height:40,
-        borderRadius:7}}>
-         <Entypo name="grid" size={35} color="black" />
+    <View style={{ alignItems: "center", justifyContent: "center" }}>
+      <View style={{   flexDirection: "row",
+        justifyContent: "space-between",
+        paddingHorizontal: 10,
+        width: 375,
+        height: 40,
+        borderRadius: 7
+      }}>
+        
+        {iscart ?
+          <AntDesign name="back" size={35} color="black" /> :
+          <Entypo name="grid" size={35} color="black" />
+
+        }
+
+       {iscart?
+         <Text style={styles.title}>
+         your Cart
+       </Text>:null
+       }
         <Image source={require("../assets/dp.png")}
-         style={styles.dp}/>
+          style={styles.dp} />
       </View>
-      {/* <Text>Header</Text> */}
+      
+
     </View>
+
   )
 }
 
@@ -26,7 +41,13 @@ export default Header
 
 const styles = StyleSheet.create({
   dp: {
-    width:35,
-    height:35,
+    width: 35,
+    height: 35,
+  },
+  title:{
+    fontSize:25,
+    fontWeight:"bold",
+    color:"orange"
+
   }
 })
