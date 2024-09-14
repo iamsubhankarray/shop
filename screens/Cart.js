@@ -1,21 +1,28 @@
 import { View, Text, FlatList } from "react-native";
 import Header from "../component/Header";
 import CartItem from  "../component/CartItem.js"   ;
+import { useSelector } from "react-redux";
+
+
 
 function CartScreen() {
+  const cartData = useSelector((state)=>state.reducer)
+ 
+  
   return (
-    <View style={{ flex: 1, alignItems: 'center' }}>
+    <View style={{ }}>
       <View style={{ marginTop: 35, }}>
         <Header iscart = {true} />
       </View>
-      <View>
+      <View style={{ marginVertical:25, marginHorizontal:25}}>
         <FlatList 
-        data={[1,2,3,4,5,6,7,8,9]}
-        renderItem={({item})=>(<CartItem item={item}/>)}/>
+        data={cartData}
+        keyExtractor={(item,index)=>(index)}
+        renderItem={(item)=>(<CartItem item={item} />)}/>
         
         
       </View>
-      <Text>Cart!</Text>
+      
     </View>
   );
 }

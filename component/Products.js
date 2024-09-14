@@ -7,6 +7,8 @@ const Products = ({item,index,}) => {
   const [like, setlike] = useState(false)
   const navigation = useNavigation()
   
+  
+  
   return (
     <View style={{ justifyContent: "center", alignItems: "center", marginHorizontal: 7,marginTop:20 }}>
       
