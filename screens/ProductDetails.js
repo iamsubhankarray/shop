@@ -7,14 +7,16 @@ import { addToCart } from '../component/redux/Action'
 import { useDispatch } from 'react-redux'
 
 const ProductDetails = () => {
-  const dispatch = useDispatch()
-
   const size = ['s', 'm', 'l', 'xl', 'xxl']
+  const dispatch = useDispatch()
   const route = useRoute()
   const item = route.params.item
-  const handleAddToCart = () => {
-    
+  const handleAddToCart = (item) => {
     dispatch(addToCart(item))
+    // console.log(item);
+    
+
+
 
 
   }
@@ -73,7 +75,7 @@ const ProductDetails = () => {
           alignItems: "center",
           marginTop: 15,
         }}
-        onPress={handleAddToCart}>
+        onPress={()=>handleAddToCart(item)}>
         <Text style={{
           textAlignVertical: "center",
           color: "white", fontWeight: 500,

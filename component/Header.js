@@ -1,11 +1,16 @@
-import { StyleSheet, Text, View, Image, } from 'react-native'
+import { StyleSheet, Text, View, Image, TouchableOpacity, } from 'react-native'
 import Entypo from '@expo/vector-icons/Entypo';
 import AntDesign from '@expo/vector-icons/AntDesign';
 
 
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 
-const Header = ({ iscart }) => {
+const Header = ({ iscart,props }) => {
+  const navigation = useNavigation()
+ 
+  
+  
   return (
     <View style={{ alignItems: "center", justifyContent: "center" }}>
       <View style={{   flexDirection: "row",
@@ -27,8 +32,11 @@ const Header = ({ iscart }) => {
          your Cart
        </Text>:null
        }
+       <TouchableOpacity onPress={()=>{navigation.navigate("account")}}>
+
         <Image source={require("../assets/dp.png")}
           style={styles.dp} />
+          </TouchableOpacity>
       </View>
       
 

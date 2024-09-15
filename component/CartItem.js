@@ -1,11 +1,16 @@
 import { Button, Image, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { removeFromCart } from './redux/Action'
 const cartItem = ({ item }) => {
-  const handleRemoveCart=()=>{
-    useDispatch(removeFromCart(item))
-  }
+  const dispatch = useDispatch()
+ 
+ const handleRemoveCart=(item)=>{
+  console.log("removed");
+  dispatch(removeFromCart(item))
+
+  
+ }
 
 
 
@@ -23,7 +28,7 @@ const cartItem = ({ item }) => {
       <View>
         <Button 
         title='remove'
-        onPress={handleRemoveCart}/>
+        onPress={()=>handleRemoveCart(item)}/>
       </View>
     </View>
   )

@@ -11,7 +11,8 @@ import HomeScreen from './screens/Home';
 import ReorderScreen from './screens/Reorder';
 import ProductDetails from './screens/ProductDetails';
 import store from './component/redux/Store'
-import { Provider } from 'react-redux';
+import { Provider, useSelector } from 'react-redux';
+import TabIconComponent from './component/TabIconComponent';
 
 
 
@@ -19,13 +20,13 @@ import { Provider } from 'react-redux';
 
 const HomeStack = () => {
   return (
-   
+
 
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name='Home' component={HomeScreen} />
       <Stack.Screen name='ProductDetails' component={ProductDetails} />
     </Stack.Navigator>
-   
+
   )
 }
 
@@ -38,10 +39,11 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
 
+
   return (
     <Provider store={store}>
 
-   
+
 
 
 
@@ -50,13 +52,13 @@ export default function App() {
           <Tab.Screen name="home_stack" component={HomeStack} options={{ tabBarIcon: () => <AntDesign name="home" size={35} color="black" /> }} />
           <Tab.Screen name="reOrder" component={HomeScreen} options={{ tabBarIcon: () => <AntDesign name="linechart" size={35} color="black" /> }} />
           <Tab.Screen name="cart" component={CartScreen} options={{
-            tabBarIcon: () => <AntDesign name="shoppingcart" size={35} color="black" />
+            tabBarIcon: () => <TabIconComponent name={"shoppingcart"}/>
           }} />
           <Tab.Screen name="account" component={AccountScreen} options={{ tabBarIcon: () => <AntDesign name="user" size={35} color="black" /> }} />
         </Tab.Navigator>
       </NavigationContainer>
-          </Provider>
-    
+    </Provider>
+
 
   );
 }
