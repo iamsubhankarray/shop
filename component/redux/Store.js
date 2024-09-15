@@ -11,12 +11,12 @@
 
 
 import { configureStore } from "@reduxjs/toolkit";
-import { AddReducer} from "./Reducers";
+import {  cartReducer} from "./Reducers";
 
 // Configuring the store with a key for the AddReducer
 const store = configureStore({
     reducer: {
-        cart: AddReducer ,// 'cart' is the state slice handled by AddReducer
+        cart: cartReducer ,// 'cart' is the state slice handled by AddReducer
        
     }
 });
