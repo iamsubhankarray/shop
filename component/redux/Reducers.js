@@ -23,7 +23,7 @@ export const cartReducer = (state = initialState, action) => {
         case ADD_TO_CART:
             return [...state, action.data]; // Add new item to the state array
             case REMOVE_FROM_CART:
-                return filteredData = state.filter((item) => item.id !== action.data);
+                return filteredData = state.filter((item) => item.id !== action.data.item.id);
                 default:
                     return state; // Return current state for unrecognized actions
     }

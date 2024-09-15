@@ -2,18 +2,18 @@ import { View, Text, FlatList } from "react-native";
 import Header from "../component/Header";
 import CartItem from "../component/CartItem.js";
 import { useSelector } from "react-redux";
-import { useEffect } from "react";
+
 
 
 
 function CartScreen(item) {
 
-  const cartData=useSelector((state) => state.cart)
-    // console.log(cartData);
-  
+  const cartData = useSelector((state) => state.cart)
 
 
- 
+
+
+
 
   return (
     <View >
