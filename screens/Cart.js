@@ -9,7 +9,7 @@ import { useEffect } from "react";
 function CartScreen(item) {
 
   const cartData=useSelector((state) => state.cart)
-    console.log(cartData);
+    // console.log(cartData);
   
 
 

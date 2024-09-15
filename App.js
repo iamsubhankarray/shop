@@ -8,7 +8,8 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 import AccountScreen from './screens/account';
 import CartScreen from './screens/Cart';
 import HomeScreen from './screens/Home';
-import ReorderScreen from './screens/Reorder';
+import Login from './screens/Login'
+import Register from './screens/Register'
 import ProductDetails from './screens/ProductDetails';
 import store from './component/redux/Store'
 import { Provider, useSelector } from 'react-redux';
@@ -29,6 +30,15 @@ const HomeStack = () => {
 
   )
 }
+const LoginStack = () => {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name='login' component={Login} />
+      <Stack.Screen name='register' component={Register} />
+      {/* <Stack.Screen name='ProductDetails' component={ProductDetails} /> */}
+    </Stack.Navigator>)
+
+}
 
 
 
@@ -48,11 +58,11 @@ export default function App() {
 
 
       <NavigationContainer>
-        <Tab.Navigator screenOptions={{ tabBarShowLabel: false, headerShown: false, tabBarHideOnKeyboard: true }}>
+        <Tab.Navigator screenOptions={{ tabBarShowLabel: false, headerShown: false, tabBarHideOnKeyboard: true, }}initialRouteName='loginStack'>
           <Tab.Screen name="home_stack" component={HomeStack} options={{ tabBarIcon: () => <AntDesign name="home" size={35} color="black" /> }} />
-          <Tab.Screen name="reOrder" component={HomeScreen} options={{ tabBarIcon: () => <AntDesign name="linechart" size={35} color="black" /> }} />
+          <Tab.Screen name="loginStack" component={LoginStack} options={{ tabBarIcon: () => <AntDesign name="linechart" size={35} color="black" /> }} />
           <Tab.Screen name="cart" component={CartScreen} options={{
-            tabBarIcon: () => <TabIconComponent name={"shoppingcart"}/>
+            tabBarIcon: () => <TabIconComponent name={"shoppingcart"} />
           }} />
           <Tab.Screen name="account" component={AccountScreen} options={{ tabBarIcon: () => <AntDesign name="user" size={35} color="black" /> }} />
         </Tab.Navigator>
