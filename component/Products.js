@@ -10,20 +10,22 @@ const Products = ({ item, index, }) => {
 
 
   return (
-    <View style={{ justifyContent: "center", alignItems: "center", marginHorizontal: 7, marginTop: 20 }}>
+    <View style={{  alignItems: "center", marginHorizontal: 17, marginTop: 20 }}>
 
       <TouchableOpacity onPress={() => { navigation.navigate("ProductDetails", { item }) }}>
         <Image
 
           source={{ uri: item.image }}
 
-          style={{ width: 175, height: 256, borderRadius: 20, }}
+          style={{ width: 128, height: 200, borderRadius: 20, }}
         />
-        <Text style={{ fontSize: 15, color: "orange", }}>{item.title}</Text>
-        <Text style={{ fontSize: 12, color: "black", }}>RS:{Math.round(item.price * 85)}</Text>
+        <Text style={{ fontSize: 17,width:150,marginVertical:10,fontWeight:"bold", color: "orange",flexWrap:"wrap" }}>{item.title.substring(0,35)+"..."}</Text>
+        <Text style={{ fontSize: 12, color: "black",flexWrap:"wrap",height:100,width:100, }}>description:{item.description.substring(4,50)+"..."}</Text>
+        <Text style={{ fontSize: 12,fontWeight:"bold", color: "black", }}>RS:{Math.round(item.price * 85)}</Text>
+        <Text style={{ fontSize: 12, color: "black",flexWrap:"wrap"}}>Remaining:{item.rating.count}</Text>
         <TouchableOpacity style={{
           position: "absolute",
-          bottom: 50, right: 10, height: 25, width: 25,
+          top:10, right: 10, height: 25, width: 25,
           borderRadius: 20,
           justifyContent: "center",
           alignContent: "center",

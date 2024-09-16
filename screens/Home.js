@@ -7,12 +7,23 @@ import Products from "../component/Products";
 import data from "../src/data.json" 
 
 import { useState } from "react";
+import axios from "axios";
 
 // <<<MAIN FUNCTION START>>>
-export default function HomeScreen(props) {
-  const [selectedcatagory, setSelectedCatagory] = useState(null)
-  const [pRODUCTitems,setproductitems]=useState(data.products)
-  const catagories = ["treanding", 'new', 'mens', 'women', 'kids', 'teens', 'others']
+export default function HomeScreen (props) {
+  
+  const [selectedcategory, setSelectedCategory] = useState(null)
+  const [productItems,setproductitems]=useState([])
+  const[category,setCategory]=useState([])
+    axios.get('https://fakestoreapi.com/products/categories')
+    .then(res=>setCategory(res.data))
+    .catch(err=>console.log(err))
+    axios.get('https://fakestoreapi.com/products?limit=10')
+    .then(res=>setproductitems(res.data) )
+ 
+    .catch(err=>console.log(err))
+   
+    
   return (
     // <<<HEADER COMPONENT FROM COMPONENT/HEAADER >>>
 
@@ -30,6 +41,7 @@ export default function HomeScreen(props) {
 
       <FlatList
         numColumns={2}
+        
         ListHeaderComponent={() => (
           <>
             {/* <<< MAIN TITLE >>> */}
@@ -56,17 +68,17 @@ export default function HomeScreen(props) {
             <FlatList
               showsHorizontalScrollIndicator={false}
               horizontal={true}
-              data={catagories}
-              keyExtractor={(item) => item}
+              data={category}
+              keyExtractor={(item,index) => index}
               renderItem={({ item }) => (
                 <Catagory item={item}
-                  selectedcatagory={selectedcatagory}
-                  setSelectedCatagory={setSelectedCatagory} />)} />
+                  selectedcatagory={selectedcategory}
+                  setSelectedCatagory={setSelectedCategory} />)} />
           </>
         )}
         showsVerticalScrollIndicator={false}
-        data={pRODUCTitems}
-        renderItem={({item,index}) => <Products item={item}index={index} />} />
+        data={productItems}
+        renderItem={({item}) => <Products item={item} />} />
 
 
 

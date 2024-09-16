@@ -1,12 +1,12 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 
-const Catagory = ({ item, selectedcatagory, setSelectedCatagory }) => {
+const Catagory = ({ item, selectedcategory, setSelectedCategory }) => {
  
 
   return (
-    <TouchableOpacity onPress={() => setSelectedCatagory(item)}>
-      <Text style={[styles.catagory, selectedcatagory === item && { color: "white", backgroundColor: "orange" }]}>{item}</Text>
+    <TouchableOpacity onPress={() => setSelectedCategory(item)}>
+      <Text style={[styles.category, selectedcategory === item && { color: "white", backgroundColor: "orange" }]}>{item}</Text>
     </TouchableOpacity>
   )
 }
@@ -14,7 +14,7 @@ const Catagory = ({ item, selectedcatagory, setSelectedCatagory }) => {
 export default Catagory
 
 const styles = StyleSheet.create({
-  catagory: {
+  category: {
     width: 100,
     height: 50,
     fontSize: 16,

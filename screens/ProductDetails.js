@@ -7,14 +7,13 @@ import { addToCart } from '../component/redux/Action'
 import { useDispatch } from 'react-redux'
 
 const ProductDetails = () => {
-  const size = ['s', 'm', 'l', 'xl', 'xxl']
-  const dispatch = useDispatch()
+  c
+  // const dispatch = useDispatch()
 
   const route = useRoute()
   const item = route.params.item
   const handleAddToCart = (item) => {
     dispatch(addToCart(item))
-    // console.log(item);
     
 
 
@@ -42,6 +41,12 @@ const ProductDetails = () => {
           fontSize: 18,
           fontWeight: 350,
         }}>{item.price}</Text>
+      <Text style={
+        {
+          alignSelf: "center",
+          fontSize: 15,
+          fontWeight: 350,
+        }}>{item.description}</Text>
       <Text style={{ fontSize: 15, }}>size</Text>
       <View style={{
         flexDirection: "row",

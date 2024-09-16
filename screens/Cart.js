@@ -2,6 +2,7 @@ import { View, Text, FlatList, TouchableOpacity } from "react-native";
 import Header from "../component/Header";
 import CartItem from "../component/CartItem.js";
 import { useSelector } from "react-redux";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 
 
@@ -9,6 +10,8 @@ import { useSelector } from "react-redux";
 function CartScreen(item) {
 
   const cartData = useSelector((state) => state.reducer)
+ 
+  
 
 
 
