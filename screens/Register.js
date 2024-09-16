@@ -30,8 +30,8 @@ export default function Register() {
       password,
       mobile,
     }
-    await axios.post('http://192.168.0.111:4000/register',registerData)
-    .then(res=>console.log(res.data))
+    await axios.post('http://192.168.0.111:8080/register',registerData)
+    .then(res=>console.log(res.data.message))
     .catch(err=>console.log(err))
     
    

@@ -9,6 +9,7 @@ import { useDispatch } from 'react-redux'
 const ProductDetails = () => {
   const size = ['s', 'm', 'l', 'xl', 'xxl']
   const dispatch = useDispatch()
+
   const route = useRoute()
   const item = route.params.item
   const handleAddToCart = (item) => {

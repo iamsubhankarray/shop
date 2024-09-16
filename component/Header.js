@@ -21,11 +21,10 @@ const Header = ({ iscart,props }) => {
         borderRadius: 7
       }}>
         
-        {iscart ?
-          <AntDesign name="back" size={35} color="black" /> :
+       
           <Entypo name="grid" size={35} color="black" />
 
-        }
+        
 
        {iscart?
          <Text style={styles.title}>

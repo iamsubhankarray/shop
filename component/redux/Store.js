@@ -1,25 +1,21 @@
-// import { configureStore } from "@reduxjs/toolkit";
-
-// import { AddReducer } from "./Reducers";
-
-
-// const store = configureStore({
-//     reducer: AddReducer
-// })
-// export default store;
-
-
-
-import { configureStore } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { cartReducer } from "./Reducers";
+import storage from "@react-native-async-storage/async-storage";
+import { persistReducer, persistStore } from "redux-persist";
+const persistConfig = {
+    key: "root",
+    storage,
+}
+const rootReducer = combineReducers({
+    reducer: cartReducer
+})
 
 
 // Configuring the store with a key for the AddReducer
 const store = configureStore({
-    reducer: {
-        cart: cartReducer,// 'cart' is the state slice handled by AddReducer
+    reducer: persistReducer(persistConfig, rootReducer)
+})
 
-    }
-});
 
 export default store;
+export const persistor = persistStore(store)

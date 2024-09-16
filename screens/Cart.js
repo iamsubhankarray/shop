@@ -1,4 +1,4 @@
-import { View, Text, FlatList } from "react-native";
+import { View, Text, FlatList, TouchableOpacity } from "react-native";
 import Header from "../component/Header";
 import CartItem from "../component/CartItem.js";
 import { useSelector } from "react-redux";
@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 
 function CartScreen(item) {
 
-  const cartData = useSelector((state) => state.cart)
+  const cartData = useSelector((state) => state.reducer)
 
 
 
@@ -16,18 +16,31 @@ function CartScreen(item) {
 
 
   return (
-    <View >
-      <View style={{ marginTop: 35, }}>
+    <View style={{ justifyContent:"center"}} >
+      <View style={{ marginTop: 35, justifyContent:"center",alignItems:"center",position:"relative"}}>
         <Header iscart={true} />
       </View>
       <View style={{ marginVertical: 25, marginHorizontal: 25 }}>
         <FlatList
+        
           data={cartData}
           keyExtractor={(item, index) => (index)}
           renderItem={(item) => (<CartItem item={item} />)} />
 
 
-      </View>
+      </View >
+      <TouchableOpacity style={{backgroundColor:"yellow",
+        width:350,height:75,
+        justifyContent:"center",
+        alignItems:"center",
+        borderRadius:20,
+        marginHorizontal:20,
+        position:"absolute",
+        bottom:-450,
+        
+        }}>
+            <Text style={{fontSize:45,color:"white"}}>check out</Text>
+          </TouchableOpacity>
 
     </View>
   );

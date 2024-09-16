@@ -3,6 +3,7 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { removeFromCart } from './redux/Action'
 const cartItem = ({ item }) => {
+  
   const dispatch = useDispatch()
  
  const handleRemoveCart=(item)=>{
@@ -17,15 +18,21 @@ const cartItem = ({ item }) => {
 
 
   return (
-    <View style={{flex:1, flexDirection: "row" }}>
+    <View style={{ flexDirection: "row",
+    justifyContent:"space-evenly",
+    position:"relative",
+    backgroundColor:"#fcdcf7",
+    borderRadius:15,
+    marginVertical:10
+     }}>
       <Image
         source={{ uri: item.item.image }}
-        style={{ width: 50, height: 100 }} />
+        style={{ width: 80, height: 100 }} />
       <View style={{}}>
-        <Text>{item.item.title}</Text>
+        <Text style={{fontWeight:"bold"}}>{item.item.title}</Text>
         <Text>{item.item.price}</Text>
       </View>
-      <View>
+      <View style={{position:"absolute",bottom:0,right:0,}}>
         <Button 
         title='remove'
         onPress={()=>handleRemoveCart(item)}/>

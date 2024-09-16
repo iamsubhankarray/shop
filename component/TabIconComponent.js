@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import AntDesign from '@expo/vector-icons/AntDesign';
 
 const TabIconComponent=({name,})=>{
-  const cartData= useSelector((state)=>state.cart)
+  const cartData= useSelector((state)=>state.reducer)
 // console.log(cartData);
 
 return (

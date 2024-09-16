@@ -29,12 +29,3 @@ export const cartReducer = (state = initialState, action) => {
     }
 };
 
-// export const RemoveReducer = (state, action) => {
-//     switch (action.type) {
-//         case REMOVE_FROM_CART:
-//             return filteredData = state.filter((item) => item.id !== action.data); // Removematching item from the state array
-
-//         default:
-//             return state; // Return current state for unrecognized actions
-//     }
-// };

@@ -9,26 +9,31 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+
 import axios from "axios"
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useNavigation } from "@react-navigation/native";
 export default function Login(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [token, settoken] = useState('')
+  // const [token, settoken] = useState('')
+  const navigation = useNavigation()
+  
 
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+
 
     const loginfo = {
       email,
       password,
     }
-    axios.post('http://192.168.0.111:8080/login', loginfo)
-    .then(res=>res.data.message==="login successfull"?props.navigation.replace('home'):null)
-    .then(err=>console.log('err1',err.data))
-    .catch(err=>console.log('err2:',err))
-   
+
+    await axios.post('http://192.168.0.111:8080/login', loginfo)
+      .then((res) =>res.status===200 &&navigation.navigate("home_stack",{screen:'home_stack'}))
+      .catch(err => console.log('err2:', err))
+
+    // .then(err=>console.log('err1',err.data))
+
   }
 
 
@@ -50,24 +55,24 @@ export default function Login(props) {
             style={styles.input}
             placeholder="enter user email"
             value={email}
-            keyboardType="email-address"
+           
             onChangeText={(e) => setEmail(e)}
           />
           <TextInput
             style={styles.input}
             placeholder="enter password"
-            keyboardType="visible-password"
+            
             value={password}
             onChangeText={(e) => setPassword(e)}
 
           />
         </View>
         <View style={styles.touch}>
-          <TouchableOpacity onPress={()=>handleSubmit}>
+          <TouchableOpacity onPress={handleSubmit}>
             <Text style={styles.btn}>logIn</Text>
           </TouchableOpacity>
         </View>
-        <View style={{alignItems:"center",marginVertical:20,}}>
+        <View style={{ alignItems: "center", marginVertical: 20, }}>
           <Text onPress={() => props.navigation.replace("register")}>
             not a user <Text style={styles.link}>register</Text>
           </Text>
@@ -82,7 +87,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "white",
     alignItems: "center",
-    
+
   },
   logo: {
     height: 320,

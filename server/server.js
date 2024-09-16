@@ -59,18 +59,16 @@ app.post('/register', async (req, res) => {
 })
 app.post('/login', async (req, res) => {  
     const { email, password } = req.body
-    const payload ={email,password,}
+    const payload ={email,password}
     const isUser = await user.findOne({ email, password })
     console.log(isUser);
     const token =jwt.sign(payload,'iamtheknight')
 
-    // res.cookie('token',token,{
-    //   maxAge: 3600000 
-    // })
+    
     if(!isUser){
-    res.json({message:"login unsuccessfull"})}
-    else
-    res.json({message:"login successfull",'token':token})
+    res.status(401)}
+    else{
+    res.status(200)}
   
 
 
